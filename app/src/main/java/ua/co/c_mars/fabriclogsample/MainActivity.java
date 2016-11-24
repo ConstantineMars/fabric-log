@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.crashlytics.android.Crashlytics;
+import com.crashlytics.android.answers.Answers;
+import com.crashlytics.android.answers.CustomEvent;
+
 import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends AppCompatActivity {
@@ -36,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
                     case 2:
                         Crashlytics.setInt("countValue", count);
                         break;
+                    case 3:
+                        Answers.getInstance().logCustom(new CustomEvent("Hello Event! :)"));
                 }
 
                 Snackbar.make(view, String.format("count=%d",count), Snackbar.LENGTH_LONG)
